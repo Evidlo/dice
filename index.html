@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚄ Dice Roller</title>
+  <link rel="stylesheet" href="lib/pico.min.css">
+  <style>
+    button.green {
+      --pico-background-color: #22c55e;
+      --pico-border-color: #22c55e;
+      --pico-color: #fff;
+    }
+    button.green:hover {
+      --pico-background-color: #16a34a;
+      --pico-border-color: #16a34a;
+    }
+    button.red {
+      --pico-background-color: #ef4444;
+      --pico-border-color: #ef4444;
+      --pico-color: #fff;
+    }
+    button.red:hover {
+      --pico-background-color: #dc2626;
+      --pico-border-color: #dc2626;
+    }
+    button.blue {
+      --pico-background-color: #3b82f6;
+      --pico-border-color: #3b82f6;
+      --pico-color: #fff;
+    }
+    button.blue:hover {
+      --pico-background-color: #2563eb;
+      --pico-border-color: #2563eb;
+    }
+
+    .entry-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+    .entry-header .label {
+      font-weight: bold;
+      margin-right: 0.25rem;
+    }
+    .entry-header .notation {
+      color: var(--pico-muted-color);
+      margin-right: auto;
+    }
+    .entry-header button {
+      margin-bottom: 0;
+      padding: 0.25rem 0.75rem;
+    }
+
+    .entry-results {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.25rem;
+      min-height: 2rem;
+    }
+
+    .die-result {
+      display: inline-block;
+      padding: 0.25em 0.5em;
+      background: lightgray;
+      font-size: 4em;
+      border: 1px solid black;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    .roll-total {
+      font-weight: bold;
+      margin-left: auto;
+    }
+
+    .roll-btn, .remove-btn {
+      font-size: 2em;
+    }
+
+    #addRow {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    #addRow input {
+      margin-bottom: 0;
+    }
+    #addRow #newLabel {
+      flex: 1;
+      min-width: 120px;
+    }
+    #addRow #newNotation {
+      width: 100px;
+    }
+    #addRow button {
+      margin-bottom: 0;
+    }
+
+    .dice-entry {
+      margin-bottom: 1rem;
+    }
+
+    dialog article {
+      max-width: 500px;
+    }
+    dialog ul {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <nav>
+        <ul><li><strong><h2>⚄ Evidlo's Dice Roller</h2></strong></li></ul>
+        <ul><li><button id="helpBtn">Help</button></li></ul>
+      </nav>
+    </header>
+
+    <div id="diceEntries"></div>
+
+    <div id="addRow">
+      <input type="text" id="newLabel" placeholder="Label">
+      <input type="text" id="newNotation" value="1d6">
+      <button class="green" id="addBtn">Add</button>
+    </div>
+  </main>
+
+  <dialog id="helpModal">
+    <article>
+      <header>
+        <button aria-label="Close" rel="prev" id="closeHelpBtn"></button>
+        <h4>Dice Notation Guide</h4>
+      </header>
+      <p>Use standard dice notation to roll dice:</p>
+      <ul>
+        <li><strong>NdX</strong> - Roll N dice with X sides (e.g., <code>2d6</code> = two 6-sided dice)</li>
+        <li><strong>+/- modifiers</strong> - Add or subtract values (e.g., <code>1d20+5</code>)</li>
+        <li><strong>d%</strong> - Percentile dice (1-100)</li>
+        <li><strong>NdXkH/kL</strong> - Keep highest/lowest (e.g., <code>4d6kh3</code> = roll 4d6, keep 3 highest)</li>
+      </ul>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>1d20</code> - Standard attack roll</li>
+        <li><code>2d6+3</code> - Damage roll with modifier</li>
+        <li><code>4d6kh3</code> - Ability score roll (drop lowest)</li>
+        <li><code>1d100</code> or <code>d%</code> - Percentile roll</li>
+      </ul>
+      <br>
+      <a href="https://github.com/evidlo/dice">Source Code</a>
+    </article>
+  </dialog>
+
+  <script src="lib/math.min.js"></script>
+  <script src="lib/random-js.umd.min.js"></script>
+  <script src="lib/rpg-dice-roller.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
