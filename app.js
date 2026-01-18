@@ -120,7 +120,7 @@
           <span class="label">${escapeHtml(entry.label)}</span>
           <span class="notation">(${escapeHtml(entry.notation)})</span>
           <button class="blue roll-btn" data-id="${entry.id}">Roll</button>
-          <button class="red remove-btn" data-id="${entry.id}">Remove</button>
+          <button class="red remove-btn" data-id="${entry.id}">×</button>
         </div>
         <div class="entry-results" id="results-${entry.id}"></div>
       `;
