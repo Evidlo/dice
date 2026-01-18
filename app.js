@@ -70,7 +70,7 @@
     if (!resultsDiv) return;
 
     // Show loading bar
-    resultsDiv.innerHTML = '<progress></progress>';
+    resultsDiv.innerHTML = '<button class="outline" aria-busy="true"></button>';
 
     // After 0.5s, show results
     setTimeout(() => {
@@ -88,7 +88,7 @@
       } catch (err) {
         resultsDiv.innerHTML = `<span style="color: var(--pico-del-color);">Error: ${err.message}</span>`;
       }
-    }, 500);
+    }, 250);
   }
 
   function extractDiceResults(roll) {
