@@ -64,13 +64,16 @@
     }
 
     .die-result {
-      display: inline-block;
-      padding: 0.25em 0.5em;
-      background: lightgray;
+      display: inline-flex;
+      aspect-ratio: 1;
+      align-content: center;
+      justify-content: center;
+      min-width: 1.5em;
+      background: antiquewhite;
       color: black;
       font-size: 4em;
-      border: 1px solid black;
-      border-radius: 4px;
+      border: 3px solid black;
+      border-radius: 6px;
       font-family: monospace;
     }
 
@@ -150,6 +153,9 @@
         <li><strong>d%</strong> - Percentile dice (1-100)</li>
         <li><strong>NdXkH/kL</strong> - Keep highest/lowest (e.g., <code>4d6kh3</code> = roll 4d6, keep 3 highest)</li>
       </ul>
+      Complete list of features is <a href="https://dice-roller.github.io/documentation/guide/notation/maths.html">here</a>.
+      <br>
+      <br>
       Examples:
       <ul>
         <li><code>1d20</code> - Standard attack roll</li>
