@@ -70,7 +70,7 @@
     if (!resultsDiv) return;
 
     // Show loading bar
-    resultsDiv.innerHTML = '<button class="outline" aria-busy="true"></button>';
+    resultsDiv.innerHTML = '<span class="die-result" aria-busy="true"></span>';
 
     // After 0.5s, show results
     setTimeout(() => {
